@@ -21,7 +21,7 @@ namespace CrmUI
 
         private void productToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var catalogProduct = new Catalog<Product>(db.Products);
+            var catalogProduct = new Catalog<Product>(db.Products, db);
             catalogProduct.Show();
 
             //var catalogProduct = new Catalog();
@@ -29,19 +29,19 @@ namespace CrmUI
 
         private void werehouseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var catalogWerehouse = new Catalog<Werehouse>(db.Werehouses);
+            var catalogWerehouse = new Catalog<Werehouse>(db.Werehouses, db);
             catalogWerehouse.Show();
         }
 
         private void categoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var catalogCategoryProducts = new Catalog<CategoryProducts>(db.CategoryProductsAll);
+            var catalogCategoryProducts = new Catalog<CategoryProducts>(db.CategoryProductsAll, db);
             catalogCategoryProducts.Show();
         }
 
         private void currentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var catalogCurrentRate = new Catalog<CurrentRate>(db.CurrentRates);
+            var catalogCurrentRate = new Catalog<CurrentRate>(db.CurrentRates, db);
             catalogCurrentRate.Show();
         }
 

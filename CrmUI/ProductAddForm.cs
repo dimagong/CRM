@@ -20,6 +20,17 @@ namespace CrmUI
             InitializeComponent();
         }
 
+        public ProductAddForm(Product product) :this()
+        {
+            Product = product;
+            textBox1.Text = Product.NameProduct;
+            numericUpDown1.Value = Product.PriceBase;
+            numericUpDown2.Value = Product.PriceReal;
+            textBox2.Text = Product.Category;
+            numericUpDown3.Value = Product.Currency;
+            numericUpDown4.Value = Product.BarCodeItem;
+        }
+
         private void ProductAddForm_Load(object sender, EventArgs e)
         {
            
@@ -32,11 +43,45 @@ namespace CrmUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Product = new Product()
+            if (Product != null)
             {
-                NameProduct = textBox1.Text
-            };
+                Product.NameProduct = textBox1.Text;
+                Product.PriceBase = numericUpDown1.Value;
+                Product.PriceReal = numericUpDown2.Value;
+                Product.Category = textBox2.Text;
+                Product.Currency = numericUpDown3.Value;
+                Product.BarCodeItem = Convert.ToInt32(numericUpDown4.Value);
+                
+
+            }
+            else
+            {
+                Product = new Product()
+                {
+                    NameProduct = textBox1.Text,
+                    PriceBase = numericUpDown1.Value,
+                    PriceReal = numericUpDown2.Value,
+                    Category = textBox2.Text,
+                    Currency = numericUpDown3.Value,
+                    BarCodeItem = Convert.ToInt32(numericUpDown4.Value)
+                };
+
+            }
+
             Close();
+
+
+
+            ///////
+            //var p = Product ?? new Product();
+            //    p.NameProduct = textBox1.Text;
+            //p.PriceBase = numericUpDown1.Value;
+            //p.PriceReal = numericUpDown2.Value;
+            //p.Category = textBox2.Text;
+            //p.Currency = numericUpDown3.Value;
+            //p.BarCodeItem = Convert.ToInt32(numericUpDown4.Value);
+
+            //Close();
         }
     }
 }

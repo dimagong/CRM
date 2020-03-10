@@ -18,6 +18,12 @@ namespace CrmUI
         {
             InitializeComponent();
         }
+        public WerehouseAddForm(Werehouse werehouse) : this()
+        {
+            Werehouse = werehouse;
+            textBox1.Text = Werehouse.NameWerehouse;  //Werehouse.NameWerehouse
+            textBox2.Text = Werehouse.AddressWerehouse;  //"Hello";
+        }
 
         private void WerehouseAddForm_Load(object sender, EventArgs e)
         {
@@ -26,11 +32,42 @@ namespace CrmUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Werehouse = new Werehouse() 
+            if(Werehouse != null)
             {
-                NameWerehouse = textBox1.Text
-            };
+                //var w = Werehouse;
+                //w.NameWerehouse = textBox1.Text;
+                Werehouse.NameWerehouse = textBox1.Text;
+                Werehouse.AddressWerehouse = textBox2.Text;
+
+            }
+            else
+            {
+                Werehouse = new Werehouse()
+                {
+                    NameWerehouse = textBox1.Text,
+                    AddressWerehouse = textBox2.Text
+                };
+
+            }
+
             Close();
+
+
+            //var w = Werehouse ?? new Werehouse();
+            //w.NameWerehouse = textBox1.Text;
+            //w.AddressWerehouse = textBox2.Text;
+            //Close();
+
+            //Werehouse = new Werehouse()
+            //{
+            //    NameWerehouse = textBox1.Text,
+            //    AddressWerehouse = textBox2.Text
+            //};
+
+            //Close();
+
+
+
         }
     }
 }

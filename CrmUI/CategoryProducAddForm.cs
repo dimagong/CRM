@@ -19,15 +19,35 @@ namespace CrmUI
             InitializeComponent();
         }
 
+        public CategoryProducAddForm(CategoryProducts category) : this()
+        {
+            CategoryProducts = category;
+            textBox2.Text = CategoryProducts.NameProducts;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            CategoryProducts = new CategoryProducts()
-            {
-                CategoryProductsId = Convert.ToInt32(textBox1.Text),
-                NameProducts = textBox2.Text
 
-            };
+            if (CategoryProducts != null)
+            {
+                CategoryProducts.NameProducts = textBox2.Text;
+            }
+            else
+            {
+                CategoryProducts = new CategoryProducts()
+                {
+                    NameProducts = textBox2.Text
+                };
+
+            }
+
             Close();
+
+            //var c = CategoryProducts ?? new CategoryProducts();
+
+            //c.NameProducts = textBox2.Text;
+
+            //Close();
         }
     }
 }
